@@ -1,0 +1,13 @@
+.logo {
+	width: 350px;
+    height: auto;
+    display: block;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.logo img {
+	display: block;
+	width: 100%;
+	height: auto;
+}

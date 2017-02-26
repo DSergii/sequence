@@ -1,0 +1,32 @@
+<md-input-container >
+  <input mdInput type="text" id="search" placeholder="Please input repo name" (input)="getSearch($event)" >
+</md-input-container>
+<div class="total" *ngIf="total">
+	<h3>Finded repositories: {{total}}</h3>
+</div>
+<md-spinner *ngIf="isSpinner" class="center"></md-spinner>
+<div class="card-holder">
+	<md-card class="repo-card" *ngFor="let item of repo">
+	    <md-card-header>
+	        <div md-card-avatar class="avatar">
+	        	<a [href]="item.owner.html_url" target="_blank">
+	        		<img md-card-image [src]="item.owner.avatar_url">
+	        	</a>
+	        </div>
+	        <div class="repo-info">
+	        	<md-card-title><h3>{{item.name}}</h3></md-card-title>
+	        	<md-card-subtitle>{{item.pushed_at | date:'medium'}}</md-card-subtitle>
+	        </div>
+	    </md-card-header>
+	    <md-card-content>
+	        <span class="repo-url"><b>Git:</b> <a [href]="item.git_url" target="_blank">{{item.git_url}}</a></span>
+	        <span class="repo-url"><b>Clone:</b> <a [href]="item.clone_url" target="_blank">{{item.clone_url}}</a></span>
+	        <span class="repo-url"><b>SSH:</b> <a [href]="item.ssh_url" target="_blank">{{item.ssh_url}}</a></span>
+	        <span class="repo-url"><b>Html:</b> <a [href]="item.html_url" target="_blank">{{item.html_url}}</a></span>
+	    </md-card-content>
+	    <md-card-footer>
+	        <span class="watchers">Watchers: {{item.watchers}}</span>
+	    </md-card-footer>
+	</md-card>
+</div>
+
